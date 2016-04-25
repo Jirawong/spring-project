@@ -16,7 +16,8 @@ public class IndexService {
 	private UserRepository userRepository;
 	
 	public List<User> addUser(User user){
-		return userRepository.add(user);
+		userRepository.save(user);
+		return userRepository.findAll();
 	}
 	
 	public User appendZ(User user){
@@ -37,7 +38,7 @@ public class IndexService {
 	}
 
 	public List<User> getUser() {
-		return userRepository.getAll();
+		return userRepository.findAll();
 	}
 	
 }

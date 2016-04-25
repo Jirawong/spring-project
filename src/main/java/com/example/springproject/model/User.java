@@ -1,9 +1,24 @@
 package com.example.springproject.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.example.springproject.validate.StartWith;
+
+@Entity
 public class User {
 
+	@Id
+	@NotEmpty
+	@StartWith(value="MR.",message="firstname must start with MR.")
 	private String firstName;
 	private String lastName;
+	@Max(100)
+	@Min(0)
 	private Integer age;
 	
 	public String getFirstName() {

@@ -1,24 +1,18 @@
 package com.example.springproject.repository;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.example.springproject.model.User;
 
-@Repository
-public class UserRepository {
+public interface UserRepository extends JpaRepository<User, String> {
 	
-	private static List<User> users = new ArrayList<User>();
+	public List<User> findByFirstName(String firstName);
 	
-	public List<User> add(User user){
-		users.add(user);
-		return users;
-	}
-
-	public List<User> getAll() {
-		return users;
-	}
-
+	public List<User> findByFirstNameAndLastName(String firstName,String lastName);
+	
+	public List<User> findByFirstNameAndLastName(String firstName,String lastName,Pageable page);
+	
 }
